@@ -59,3 +59,57 @@ console.log(processInputresult3)
 
 // problem 3
 
+function formatCoordinate (
+    location:readonly[number,number,string]
+):string{
+const [latitude,longitude,locationName]=location 
+    return `Location: ${locationName} (${latitude}, ${longitude})`
+}
+
+const formatCoordinat=formatCoordinate([23.81, 90.41, "Dhaka"]);
+
+console.log(formatCoordinat)
+
+
+
+// Problem 4:
+
+function concatenateArrays<T>(...arrays: T[][]):T[]{
+    return arrays.flat()
+}
+
+console.log(concatenateArrays(["a", "b"], ["c", "d"]));
+
+console.log(concatenateArrays([1, 2], [3, 4], [5]));
+
+
+
+
+// Problem 5:
+
+
+interface Course {
+    title :string
+    students :number
+    isPublished :boolean
+}
+
+
+
+function getPopularCourses  (courses:Course[],minStudents :number):Course[]{
+
+    return courses.filter(course => {
+        return course.isPublished === true &&
+               course.students >= minStudents;
+    });
+   
+}
+
+const courses = [
+  { title: "TypeScript Mastery", students: 120, isPublished: true },
+  { title: "Draft Course", students: 200, isPublished: false },
+  { title: "Basic HTML", students: 45, isPublished: true },
+  { title: "Next.js Pro", students: 85, isPublished: true }
+];
+
+console.log(getPopularCourses(courses, 80))
